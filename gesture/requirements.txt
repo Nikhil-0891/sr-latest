@@ -1,0 +1,23 @@
+# ============================================================
+# Gesture Teleoperation Pipeline — Dependencies
+# Tested on Python 3.10 / 3.11
+# ============================================================
+
+# --- Core CV / ML ---
+mediapipe==0.10.14          # Holistic + Hands landmark models (BlazePose + BlazeHand)
+ultralytics==8.3.28         # YOLOv8-Pose (used for long-range person/keypoint detection)
+opencv-python==4.10.0.84    # Frame capture, optical flow, HUD rendering
+numpy==1.26.4
+filterpy==1.4.5             # Kalman filtering utilities
+
+# --- Robotics / Comms ---
+pyserial==3.5                # Serial fallback for arm controllers (Arduino/ODrive/etc.)
+# rclpy is NOT pip-installable — install via ROS2 (Humble/Jazzy) apt packages.
+# See README.md "ROS2 Setup" section. The code degrades gracefully if rclpy is absent.
+
+# --- Utility ---
+dataclasses-json==0.6.7
+loguru==0.7.2                 # Structured logging for latency/FPS benchmarking
+
+# --- Optional GPU acceleration ---
+# onnxruntime-gpu==1.19.2     # Uncomment if exporting YOLOv8-Pose to ONNX for TensorRT/GPU inference
